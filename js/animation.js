@@ -84,11 +84,25 @@ readMsg(blackText);
 button.addEventListener("click", function () {
   if (button.classList.contains("switch")) {
     /* 
-            When the switch is pressed, the black div will wipe out and the backgroung scene with no 
-            elements will appear, signifying that the lights are turned on and the room is empty. Then 
-            the msg will be displayed after which, the user will be asked to move out and the button with
-            door icon will appear. 
-        */
+      When the switch is pressed, the black div will wipe out and the backgroung scene with no 
+      elements will appear, signifying that the lights are turned on and the room is empty. Then 
+      the msg will be displayed after which, the user will be asked to move out and the button with
+      door icon will appear. 
+    */
+
+    /* Get the documentElement (<html>) to display the page in fullscreen */
+    var elem = document.documentElement;
+
+    /* View in fullscreen */
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+      /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      /* IE11 */
+      elem.msRequestFullscreen();
+    }
 
     light.play();
     transition(darkroom);
@@ -154,7 +168,7 @@ button.addEventListener("click", function () {
       return;
     }
 
-    document.querySelector(".HBD").textContent = "May your soul rest in peace";
+    document.querySelector(".HBD").textContent = "Wish you all the best!";
 
     frames[1].style.display = "flex";
 
